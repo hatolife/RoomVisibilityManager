@@ -194,6 +194,8 @@ public class RoomVisibilityManager : UdonSharpBehaviour
     private void Start()
     {
         currentRoomIndex = -1;
+        // Ensure visibility is applied once at startup even when spawn state is already "outside".
+        ForceRefreshVisibility();
         _nextCheckTime = Time.time + Mathf.Max(0f, startupDelaySeconds);
         _nextDebugStateLogTime = _nextCheckTime;
         _startupWaitLogged = false;
